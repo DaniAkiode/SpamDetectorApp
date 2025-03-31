@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <title>Spam Detection Application</title>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Spam Detection Application</h2>
+            <form method="post">
+                <label for="message">Enter Email Here For Spam Detection</label>
+                <textarea id = "message" name="message" rows="4" cols="50"></textarea>
+                <br>
+                <button type="submit">Check</button>
+            </form>
+
+            {% if result %}
+                <h3>Result: {{ result }}</h3>
+            {% endif %}
+        </div>
+    </body>
+</html>
