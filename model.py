@@ -3,11 +3,14 @@ import joblib
 # Load vectorizer
 cv = joblib.load("cv3.pkl")
 tfidf = joblib.load("tfidf.pkl")
+tfidf_nb = joblib.load("nbtfidf2.pkl")
+
 
 # Load multiple models
 models = {
     "naive_bayes": (cv, joblib.load("NBSpamDetector3.pkl")),
     "random_forest": (tfidf, joblib.load("rfBasedSpamDetector.pkl")),  
+    "naive_bayes2": (tfidf_nb, joblib.load("nbBasedSpamDetector2.pkl"))
 }
 
 def predict_spam(text, model_name="naive_bayes"):  # Default to Naive Bayes
