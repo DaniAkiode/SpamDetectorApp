@@ -2,6 +2,7 @@ import joblib
 
 # Load vectorizer
 cv = joblib.load("cv3.pkl")
+cv2 = joblib.load("cv4.pkl")
 tfidf = joblib.load("tfidf.pkl")
 tfidf_nb = joblib.load("nbtfidf2.pkl")
 
@@ -10,7 +11,9 @@ tfidf_nb = joblib.load("nbtfidf2.pkl")
 models = {
     "naive_bayes": (cv, joblib.load("NBSpamDetector3.pkl")),
     "random_forest": (tfidf, joblib.load("rfBasedSpamDetector.pkl")),  
-    "naive_bayes2": (tfidf_nb, joblib.load("nbBasedSpamDetector2.pkl"))
+    "naive_bayes2": (tfidf_nb, joblib.load("nbBasedSpamDetector2.pkl")),
+    "naive_bayes3": (cv2, joblib.load("nb_spam_model4.pkl")),
+    "logic_regression": (cv2, joblib.load("lr_spam_model.pkl"))
 }
 
 def predict_spam(text, model_name="naive_bayes"):  # Default to Naive Bayes
