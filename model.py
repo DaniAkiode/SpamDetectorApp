@@ -5,6 +5,7 @@ cv = joblib.load("cv3.pkl")
 cv2 = joblib.load("cv4.pkl")
 tfidf = joblib.load("tfidf.pkl")
 tfidf_nb = joblib.load("nbtfidf2.pkl")
+tdidf_knn = joblib.load("tdidf_knn.pkl")
 
 
 # Load multiple models
@@ -13,7 +14,8 @@ models = {
     "random_forest": (tfidf, joblib.load("rfBasedSpamDetector.pkl")),  
     "naive_bayes2": (tfidf_nb, joblib.load("nbBasedSpamDetector2.pkl")),
     "naive_bayes3": (cv2, joblib.load("nb_spam_model4.pkl")),
-    "logic_regression": (cv2, joblib.load("lr_spam_model.pkl"))
+    "logic_regression": (cv2, joblib.load("lr_spam_model.pkl")),
+    "knn": (tdidf_knn, joblib.load("KNNSpamDetectorModel.pkl"))
 }
 
 def predict_spam(text, model_name="naive_bayes"):  # Default to Naive Bayes
@@ -24,9 +26,9 @@ def predict_spam(text, model_name="naive_bayes"):  # Default to Naive Bayes
     text_vector = vectorizer.transform([text])  # Convert text to numerical format
     prediction = model.predict(text_vector)  # Make a prediction
     
-    if prediction == 1:
+    if prediction == 1: #If the prediction is spam then send the message below 
         return "This is Spam! Delete Email at ONCE!"
-    else:
+    else:# if the prediction is ham send the message below 
         return "This is Ham! Keep the email! (Could be important!)"
 
 
