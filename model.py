@@ -29,7 +29,7 @@ def predict_spam(text, model_name="naive_bayes"):  # Default to Naive Bayes
         return "Invalid model selected!"
 
     vectorizer, model = models[model_name]  # Get selected model
-    text_vector = vectorizer.transform([text])  # Convert text to numerical format
+    text_vector = vectorizer.transform([text])  # Convert text to numerical format for the program to understand the text 
     prediction = model.predict(text_vector)  # Make a prediction
     
     if prediction == 1: #If the prediction is spam then send the message below 
