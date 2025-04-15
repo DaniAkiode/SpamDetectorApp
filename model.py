@@ -15,6 +15,8 @@ models = {
     "logic_regression": (cv, joblib.load("models/lr_spam_model5.pkl")),
     "KNeighborsClassifier": (tfidf, joblib.load("models/knn_spam_model3.pkl"))
 
+# Used code 
+
 #    "naive_bayes": (cv, joblib.load("NBSpamDetector3.pkl")),
 #    "random_forest": (tfidf, joblib.load("rfBasedSpamDetector.pkl")),  
 #    "naive_bayes2": (tfidf_nb, joblib.load("nbBasedSpamDetector2.pkl")),
