@@ -1,7 +1,7 @@
 import sqlite3
 
 def view_results():
-    conn = sqlite3.connect("spam_results.db") #connect to database
+    conn = sqlite3.connect("spam_results_with_model.db") #connect to database
     cursor = conn.cursor() # turn database into an object
 
     cursor.execute("SELECT * FROM results") # execute sql commands 

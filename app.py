@@ -20,7 +20,7 @@ def index():
         if user_input:  # Make sure input is not empty
             result = predict_spam(user_input, selected_model)  # Get prediction with chosen model
             if save_to_database:
-                insert_result(user_input, result)
+                insert_result(user_input, result, selected_model)
         else:
             result = "No message entered!"  # Handle empty input
     
