@@ -23,7 +23,7 @@ def index():
         else:
             result = "No message entered!"  # Handle empty input
     
-    return render_template("index.html", result=result, selected_model=selected_model)  # Pass selected model
+    return render_template("index.html", result=result, selected_model=selected_model)  # Pass index.html, result and  selected model through function to make web page dynamic 
 
 if __name__ == "__main__":  # Runs only when this file is executed directly
     app.run(debug=True)  # Enable debug mode
