@@ -1,6 +1,6 @@
 import joblib
 
-# Load vectorizer
+#Load vectorizer
 #cv = joblib.load("cv3.pkl")
 #cv2 = joblib.load("cv4.pkl")
 #tfidf = joblib.load("tfidf.pkl")
@@ -17,20 +17,20 @@ models = {
 
 # Used code 
 
-#    "naive_bayes": (cv, joblib.load("NBSpamDetector3.pkl")),
-#    "random_forest": (tfidf, joblib.load("rfBasedSpamDetector.pkl")),  
-#    "naive_bayes2": (tfidf_nb, joblib.load("nbBasedSpamDetector2.pkl")),
-#    "naive_bayes3": (cv2, joblib.load("nb_spam_model4.pkl")),
+#   "naive_bayes": (cv, joblib.load("NBSpamDetector3.pkl")),
+#   "random_forest": (tfidf, joblib.load("rfBasedSpamDetector.pkl")),  
+#   "naive_bayes2": (tfidf_nb, joblib.load("nbBasedSpamDetector2.pkl")),
+#   "naive_bayes3": (cv2, joblib.load("nb_spam_model4.pkl")),
 #   "logic_regression": (cv2, joblib.load("lr_spam_model.pkl")),
 #   "knn": (tdidf_knn, joblib.load("KNNSpamDetectorModel.pkl"))
  
 }
 
 def predict_spam(text, model_name="naive_bayes"):  # Default to Naive Bayes
-    if model_name not in models:
-        return "Invalid model selected!"
+    if model_name not in models: 
+        return "Invalid model selected!" #Display the message if the models are not in the list 
 
-    vectorizer, model = models[model_name]  # Get selected model
+    vectorizer, model = models[model_name]  # Get selected model, assigns "vectorizer" and "model" to the selected model along with the vectorzier being used   
     text_vector = vectorizer.transform([text])  # Convert text to numerical format for the program to understand the text 
     prediction = model.predict(text_vector)  # Make a prediction
     
