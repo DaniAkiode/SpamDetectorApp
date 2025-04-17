@@ -14,12 +14,13 @@ def index():
     selected_model = "naive_bayes"  # Default model
 
     if request.method == "POST":  # Use POST to send data to the server
-        user_input = request.form.get("message")  # Get user input
-        selected_model = request.form.get("model")  # Get selected model
-        
+        user_input = request.form.get("message")  # Get user input from html file
+        selected_model = request.form.get("model")  # Get selected model from html
+        save_to_database = request.form.get("SaveToDatabase") # Get option to save data from html file 
         if user_input:  # Make sure input is not empty
             result = predict_spam(user_input, selected_model)  # Get prediction with chosen model
-            insert_result(user_input, result)
+            if save_to_database:
+                insert_result(user_input, result)
         else:
             result = "No message entered!"  # Handle empty input
     
