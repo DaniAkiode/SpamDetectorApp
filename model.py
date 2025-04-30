@@ -1,32 +1,18 @@
 import joblib
-
-#Load vectorizer
-#cv = joblib.load("cv3.pkl")
-#cv2 = joblib.load("cv4.pkl")
-#tfidf = joblib.load("tfidf.pkl")
-#tfidf_nb = joblib.load("nbtfidf2.pkl")
-#tdidf_knn = joblib.load("tdidf_knn.pkl")
+#Load vectorizers
 cv = joblib.load("models/cv5.pkl")
 tfidf = joblib.load("models/tfidf3.pkl")
 
-# Load multiple models
+# Load multiple models along with respected vectorizers 
 models = {
     "naive_bayes": (cv, joblib.load("models/nb_spam_model5.pkl")),
     "logic_regression": (cv, joblib.load("models/lr_spam_model5.pkl")),
     "KNeighborsClassifier": (tfidf, joblib.load("models/knn_spam_model3.pkl"))
 
-# Used code 
-
-#   "naive_bayes": (cv, joblib.load("NBSpamDetector3.pkl")),
-#   "random_forest": (tfidf, joblib.load("rfBasedSpamDetector.pkl")),  
-#   "naive_bayes2": (tfidf_nb, joblib.load("nbBasedSpamDetector2.pkl")),
-#   "naive_bayes3": (cv2, joblib.load("nb_spam_model4.pkl")),
-#   "logic_regression": (cv2, joblib.load("lr_spam_model.pkl")),
-#   "knn": (tdidf_knn, joblib.load("KNNSpamDetectorModel.pkl"))
  
 }
 
-def predict_spam(text, model_name="naive_bayes"):  # Default to Naive Bayes
+def predict_spam(text, model_name="naive_bayes"):  # declare predict_spam 
     if model_name not in models: 
         return "Invalid model selected!" #Display the message if the models are not in the list 
 
