@@ -10,7 +10,7 @@ models = {
     "KNeighborsClassifier": (tfidf, joblib.load("models/knn_spam_model3.pkl"))
 }
 
-def predict_message(text, model_name="naive_bayes"):  # declare predict_spam function for predicting the message 
+def predict_message(text, model_name="naive_bayes"):  # declare predict_message function for predicting the message 
     if model_name not in models: 
         return "Invalid model selected!" #Display the message if the models are not in the list 
     vectorizer, model = models[model_name]  # Get selected model, assigns "vectorizer" and "model" to the selected model along with the vectorzier being used   
