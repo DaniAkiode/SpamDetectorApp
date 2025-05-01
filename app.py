@@ -19,10 +19,10 @@ def index():
         save_to_database = request.form.get("SaveToDatabase") # Get option to save data from html file 
         if user_input:  # Make sure input is not empty
             result = predict_message(user_input, selected_model)  # Get prediction with chosen model
-            if save_to_database:
+            if save_to_database: #If user want to save message to database 
                 insert_result(user_input, result, selected_model) # Send results to database if check box has been ticked 
         else:
-            result = "No message entered!"  # Handle empty input
+            result = "No message entered!"  # send message if input is empty
     
     return render_template("index.html", result=result, selected_model=selected_model)  # Pass index.html, result and  selected model through function to make web page dynamic 
 
