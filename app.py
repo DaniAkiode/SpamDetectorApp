@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template # for sending/getting data and 
-from model import predict_spam # spam detection function
+from model import predict_message # spam detection function
 from database import create_table, insert_result  # import database functions 
 
 app = Flask(__name__)
@@ -18,9 +18,9 @@ def index():
         selected_model = request.form.get("model")  # Get selected model from html
         save_to_database = request.form.get("SaveToDatabase") # Get option to save data from html file 
         if user_input:  # Make sure input is not empty
-            result = predict_spam(user_input, selected_model)  # Get prediction with chosen model
+            result = predict_message(user_input, selected_model)  # Get prediction with chosen model
             if save_to_database:
-                insert_result(user_input, result, selected_model)
+                insert_result(user_input, result, selected_model) # Send results to database if check box has been ticked 
         else:
             result = "No message entered!"  # Handle empty input
     

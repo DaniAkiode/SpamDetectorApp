@@ -8,18 +8,14 @@ models = {
     "naive_bayes": (cv, joblib.load("models/nb_spam_model5.pkl")),
     "logic_regression": (cv, joblib.load("models/lr_spam_model5.pkl")),
     "KNeighborsClassifier": (tfidf, joblib.load("models/knn_spam_model3.pkl"))
-
- 
 }
 
-def predict_spam(text, model_name="naive_bayes"):  # declare predict_spam 
+def predict_message(text, model_name="naive_bayes"):  # declare predict_spam function for predicting the message 
     if model_name not in models: 
         return "Invalid model selected!" #Display the message if the models are not in the list 
-
     vectorizer, model = models[model_name]  # Get selected model, assigns "vectorizer" and "model" to the selected model along with the vectorzier being used   
     text_vector = vectorizer.transform([text])  # Convert text to numerical format for the program to understand the text 
-    prediction = model.predict(text_vector)  # Make a prediction
-    
+    prediction = model.predict(text_vector)  # Make a prediction    
     if prediction == 1: #If the prediction is spam then send the message below 
         return "This is Spam! Delete Email at ONCE!"
     else:# if the prediction is ham send the message below 
